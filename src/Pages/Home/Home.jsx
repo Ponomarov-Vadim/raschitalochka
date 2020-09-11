@@ -1,54 +1,29 @@
-import React, { useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import React, { useEffect } from "react";
 
-// Components
-import MainTableMobile from "../../components/MainTable/Mobile/MainTableMobile";
-import MainTableDesckop from "../../components/MainTable/TabletOrDesktop/MainTableDesckop";
+import Header from "../../components/Header/Header";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import MainInfo from "../../components/MainInfo/MainInfo";
+import { mainWrapper } from "./Home.module.css";
+import withAuth from "../../hoc/withAuth";
+import { load } from "../../services/localStorage";
 
-import { button } from "./Button.module.css";
-
-import ModalWindow from "../../components/ModalWindow";
-
-const Home = () => {
-  const isMobileDevice = useMediaQuery({
-    query: "(max-device-width: 767px)",
-  });
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [actionType, setActionType] = useState("COST");
-  const changeIsModalOpen = (e) => {
-    if (!isModalOpen) {
-    setActionType(e.target.name);      
+const Home = (props) => {
+  useEffect(() => {
+    const data = load("session");
+    if (data) {
+      props.userSession(data);
     }
-    setIsModalOpen(!isModalOpen);
-  };
-
+    props.getFinance();
+  }, []);
   return (
     <>
-      {isMobileDevice ? (
-        <MainTableMobile>
-        {/* <NavLink path="/income" /> <CostIncome actionType="INCOME" />  к примеру*/}
-        {/* <NavLink path="/cost" /> <CostIncome actionType="COST" /> */}
-        </MainTableMobile>
-      ) : (
-        <MainTableDesckop>
-          <button className={button} onClick={changeIsModalOpen} name="INCOME">
-            Add Income
-          </button>
-          <button className={button} onClick={changeIsModalOpen} name="COST">
-            Add Cost
-          </button>
-        </MainTableDesckop>
-      )}
-      {isModalOpen && (
-        <ModalWindow
-          changeIsModalOpen={changeIsModalOpen}
-          actionType={actionType}
-        />
-      )}
-      
+      <Header {...props} />
+      <div className={mainWrapper}>
+        <Sidebar />
+        <MainInfo />
+      </div>
     </>
   );
 };
 
-export default Home;
+export default withAuth(Home);

@@ -1,0 +1,19 @@
+.mainWrapper {
+    max-width: 1280px;
+    margin: 0 auto
+}
+
+@media (min-width: 1024px) {
+    .mainWrapper {
+        width:1024px;
+        display: -webkit-flex;
+        display: flex;
+        padding: 1.5rem 0 2rem
+    }
+}
+
+@media (min-width: 1300px) {
+    .mainWrapper{
+        width:1280px
+    }
+}

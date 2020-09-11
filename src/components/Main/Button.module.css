@@ -1,0 +1,22 @@
+@value colors "../../styles/variables.css";
+@value color-text-income, color-text-main-light,btn-main, btn-active from colors;
+
+.button {
+  width: 150px;
+  padding: 12px 0;
+  color: color-text-main-light;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: btn-main;
+  box-shadow: 2px 3px 3px rgba(92, 135, 94, 0.2);
+  border: none;
+  border-radius: 4px;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  background-color: color-text-income;
+  background-image: btn-active;
+}

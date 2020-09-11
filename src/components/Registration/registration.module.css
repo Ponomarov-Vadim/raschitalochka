@@ -97,6 +97,7 @@ body {
     font-weight: 700;
     margin-bottom: 23px;
     transition: .2s ease-in-out all;
+    cursor: pointer;
 }
 
 .login__link {

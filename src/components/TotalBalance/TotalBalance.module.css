@@ -1,0 +1,63 @@
+@value var: "../../styles/variables.css";
+@value btn-main, color-text-logout, color-main, color-text-main-light from var;
+
+@media screen and (max-width: 767px) {
+  .wrapBlance {
+    margin: 0 10px;
+    text-align: center;
+    padding: 26px 30px;
+    background-color: color-main;
+    border-radius: 5px;
+  }
+
+  .textBalabce {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: color-text-main-light;
+  }
+
+  .balance {
+    font-weight: 700;
+    color: color-text-main-light;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapBlance p {
+    display: inline-block;
+  }
+
+  .textBalabce {
+    display: flex;
+    font-size: 15px;
+    font-weight: 500;
+    color: color-text-logout;
+  }
+
+  .balance {
+    color: btn-main;
+  }
+}
+
+/* desktop  */
+
+@media screen and (min-width: 1224px) {
+  .wrapBlance {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 30px;
+    width: 100%;
+    background-color: color-main;
+    border-radius: 5px;
+  }
+
+  .textBalabce {
+    font-weight: 700;
+    color: color-text-main-light;
+  }
+
+  .balance {
+    font-weight: 700;
+    color: color-text-main-light;
+  }
+}

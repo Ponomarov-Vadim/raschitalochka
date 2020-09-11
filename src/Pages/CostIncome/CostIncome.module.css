@@ -1,6 +1,20 @@
 @value colors "../../styles/variables.css";
 @value color-text-main-light from colors;
 
+.incomCostWrapper {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
+}
+
+.incomCostContainer {
+padding: 0 10px;
+
+}
+
 .incomCostBlock {
     display: flex;
     background-color: rgb(81, 109, 87);

@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Screen resolution: 320px, 768px, "1700px?" 
+Screen resolution: 320px, 768px, "1024px" 
 
 ## Available Scripts
 
