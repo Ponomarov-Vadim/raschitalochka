@@ -15,6 +15,7 @@ import {
   radioCost,
   radioIncome,
 } from "./FormCostIncome.module.css";
+import axios from "axios";
 
 const categoriesCost = [
   "Main Expenses",
@@ -36,7 +37,7 @@ const FormCostIncome = ({ actionType, changeIsModalOpen }) => {
 
   const amountStyle =
     actionType === "COST" ? amountInputCost : amountInputIncome;
-    
+
   const radioStyle = actionType === "COST" ? radioCost : radioIncome;
 
   const [amount, setAmount] = useState(0);
@@ -46,10 +47,31 @@ const FormCostIncome = ({ actionType, changeIsModalOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      `amount: ${amount}; date: ${date}; category: ${category}; comments: ${comments};`
-    );
-    if(changeIsModalOpen) changeIsModalOpen();
+
+    const dateParse = Date.parse(date) / 1000;
+
+    const options = {
+      method: "post",
+      data: {
+        date: dateParse,
+        type: "+",
+        category: category,
+        amount: amount,
+        balanceAfter: 300000,
+        comments: comments,
+        typeBalanceAfter: "+",
+      },
+      url: `https://raschitalochka.goit.co.ua/api/finance/5f57c3529043240c96228515`,
+    };
+
+    axios(options).then((res) => {
+      console.log(res);
+    });
+
+    // console.log(
+    //   `amount: ${amount}; date: ${date}; category: ${category}; comments: ${comments};`
+    // );
+    if (changeIsModalOpen) changeIsModalOpen();
   };
 
   const handleChange = ({ target: { value, name } }) => {
