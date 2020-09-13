@@ -41,7 +41,7 @@
 
 /* desktop  */
 
-@media screen and (min-width: 1224px) {
+@media screen and (min-width: 1024px) {
   .wrapBlance {
     display: flex;
     justify-content: space-between;

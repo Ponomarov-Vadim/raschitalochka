@@ -1,7 +1,7 @@
 @value variables  "../../styles/variables.css";
 @value table-row-bg-dark, color-text-main-light from variables;
 
-.currency {
+.currencyStyle {
   width: 320px;
   font-family: HelveticaNeueCyr;
   background-color: color-text-main-light;
@@ -18,7 +18,7 @@
 }
 
 @media (min-width: 768px) {
-  .currency {
+  .currencyStyle {
     width: 352px;
     box-shadow: grey;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -29,8 +29,8 @@
   }
 }
 
-@media (min-width: 1700px) {
-  .currency {
+@media (min-width: 1024px) {
+  .currencyStyle {
     width: 360px;
     height: 490px;
     background-image: url("../../images/login/bg.png");

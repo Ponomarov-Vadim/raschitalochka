@@ -8,6 +8,10 @@ body {
     position: relative;
 }
 
+.desctop_wrap {
+    display: none;
+}
+
 .logo {
     padding-top: 65px;
     display: block;
@@ -219,5 +223,90 @@ body {
         font-size: 12px;
         font-weight: 400;
         margin-bottom: 48px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+
+    .desctop_wrap {
+        display: flex;
+        position: relative;
+        width: 50%;
+        background: url(../../images/registration/Background.png) no-repeat;
+    }
+
+    .registration__btn {
+        width: 438px;
+        background-image: linear-gradient(to right, #ecb22a 0%, rgba(255, 108, 0, 0.7) 100%);
+    }
+
+    .desctop_wrap::before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 50%;
+        background: rgba(0, 0, 0, .6);
+        z-index: 100;
+    }
+
+    .desctop_wrap_text {
+        margin: auto 6%;
+    }
+
+    .desctop_wrap_img {
+        z-index: 200;
+        width: 391px;
+        height: 798px;
+        position: absolute;
+        right: 404px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .desctop_wrap_text {
+        position: absolute;
+        top: 50%;
+        right: -90px;
+        transform: translateY(-50%);
+        z-index: 200;
+        color: white;
+    }
+
+    .desctop_wrap_text > p {
+        font-family: "HelveticaNeueCyr";
+        font-size: 35px;
+        font-weight: bold;
+        max-width: 422px;
+    }
+
+    .desctop_wrap_text > h2 {
+        font-size: 20px;
+        font-weight: 700;
+        display: flex;
+    }
+
+    .desctop_wrap_text > h2 > img {
+        margin-right: 10px;
+        margin-bottom: 34px;
+    }
+
+    .main_wrap {
+        display: flex;
+        height: 100vh;
+    }
+
+    .main_registartion_wrap {
+        width: 50%;
+        position: relative;
+        background: #f9fcf9 url(/static/media/bg.03e75742.png) no-repeat center;
+        background-position: 0px 650px;
+    }
+
+    .registration__wrap {
+        box-shadow: 10px 17px 40px rgba(107, 125, 131, 0.3);
+        width: 500px;
     }
 }

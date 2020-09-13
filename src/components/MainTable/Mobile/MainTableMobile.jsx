@@ -1,94 +1,66 @@
 import React from "react";
+
+import { toISODate, formatNumbers } from "../../../helpers/format";
+import { getCategoryColor } from "../../../helpers/initialCategoryColors";
+
 import {
+  wrap,
   list,
   list__item,
   list__itemRow,
   boxButtons,
+  notifyMessage,
 } from "./MainTableMobile.module.css";
 
-const transferData = [
-  {
-    date: "07.01.19",
-    type: "+",
-    categories: "Regular Income",
-    comment: "Cash",
-    amount: "1 000.00",
-    balance: "14 870.00",
-    borderColor: "#75c16e",
-  },
-  {
-    date: "07.01.19",
-    type: "-",
-    categories: "Food",
-    comment: "Coffee with Tim",
-    amount: "30.00",
-    balance: "13 870.00",
-    borderColor: "#e28b20",
-  },
-  {
-    date: "07.01.19",
-    type: "+",
-    categories: "Regular Income",
-    comment: "Cash",
-    amount: "1 000.00",
-    balance: "14 870.00",
-    borderColor: "#75c16e",
-  },
-  {
-    date: "07.01.19",
-    type: "-",
-    categories: "Car",
-    comment: "Oil",
-    amount: "1 000.00",
-    balance: "13 970.00",
-    borderColor: "#d25925",
-  },
-];
-
-const MainTableMobile = ({ children }) => {
+const MainTableMobile = ({ financeData, children }) => {
   return (
-    <section>
+    <section className={wrap}>
       <ul className={list}>
-        {transferData.map(
-          (
-            { date, type, categories, comment, amount, balance, borderColor },
-            index
-          ) => (
-            <li
-              key={index}
-              className={list__item}
-              style={{ borderColor: borderColor }}
-            >
-              <div className={list__itemRow}>
-                <p>Date</p>
-                <p>{date}</p>
-              </div>
-              <div className={list__itemRow}>
-                <p>Type</p>
-                <p>{type}</p>
-              </div>
-              <div className={list__itemRow}>
-                <p>Category</p>
-                <p>{categories}</p>
-              </div>
-              <div className={list__itemRow}>
-                <p>Comments</p>
-                <p>{comment}</p>
-              </div>
-              <div className={list__itemRow}>
-                <p>Amount, UAH</p>
-                <p style={{ color: type === "+" ? "#75c16e" : "#ff6c00" }}>
-                  {amount}
-                </p>
-              </div>
-              <div className={list__itemRow}>
-                <p>Balance After</p>
-                <p>{balance}</p>
-              </div>
-            </li>
-          )
+        {financeData.map(
+          ({ _id, date, type, category, comments, amount, balanceAfter }) => {
+            const colorCategory = getCategoryColor(category);
+            return (
+              <li
+                key={_id}
+                className={list__item}
+                style={{
+                  borderColor: colorCategory?.color,
+                }}
+              >
+                <div className={list__itemRow}>
+                  <p>Date</p>
+                  <p>{toISODate(date)}</p>
+                </div>
+                <div className={list__itemRow}>
+                  <p>Type</p>
+                  <p>{type}</p>
+                </div>
+                <div className={list__itemRow}>
+                  <p>Category</p>
+                  <p>{category}</p>
+                </div>
+                <div className={list__itemRow}>
+                  <p>Comments</p>
+                  <p>{comments}</p>
+                </div>
+                <div className={list__itemRow}>
+                  <p>Amount, UAH</p>
+                  <p style={{ color: type === "+" ? "#75c16e" : "#ff6c00" }}>
+                    {formatNumbers(amount)}
+                  </p>
+                </div>
+                <div className={list__itemRow}>
+                  <p>Balance After</p>
+                  <p>{formatNumbers(balanceAfter)}</p>
+                </div>
+              </li>
+            );
+          }
         )}
       </ul>
+      {!financeData.length && (
+        <h2 className={notifyMessage}>You have no transactions</h2>
+      )}
       <div className={boxButtons}>{children}</div>
     </section>
   );

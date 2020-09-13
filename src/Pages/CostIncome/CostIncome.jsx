@@ -1,5 +1,5 @@
 import React from "react";
-import FormCostIncome from "../../components/FormCostIncome";
+import FormCostIncome from "../../components/FormCostIncome/containerCostIncome";
 
 import {
   incomCostBlock,

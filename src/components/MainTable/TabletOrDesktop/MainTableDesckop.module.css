@@ -48,6 +48,12 @@ td {
   background-color: color-white;
 }
 
+.notifyMessage {
+  text-align: center;
+  padding-top: 40px;
+  color: color-text-main-dark;
+}
+
 @media screen and (min-width: 767px) {
   .boxButtons {
     position: static;

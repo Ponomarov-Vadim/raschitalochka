@@ -1,6 +1,10 @@
 @value colors "../../../styles/variables.css";
 @value color-white, table-row-bg-dark, color-text-main-dark, font-family-primary from colors;
 
+.wrap {
+  padding-top: 20px;
+}
+
 .list {
   margin: 0;
   padding: 0;
@@ -14,6 +18,7 @@
 
 .list__itemRow {
   display: flex;
+  padding: 16px 0;
   padding-left: 16px;
 }
 
@@ -43,4 +48,10 @@
   padding: 14px 0;
   box-shadow: 0 -10px 30px rgba(119, 119, 119, 0.1);
   background-color: color-white;
+}
+
+.notifyMessage {
+  text-align: center;
+  padding-top: 20px;
+  color: color-text-main-dark;
 }

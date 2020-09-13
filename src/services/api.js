@@ -28,3 +28,10 @@ export const postIncomeCost = async (userId, token, finance) => {
   const response = axios.post(`/api/finance/${userId}`, finance);
   return response;
 };
+
+export const fetchCurrency = () => {
+  const response = axios.get(
+    "https://cors-anywhere.herokuapp.com/api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5"
+  );
+  return response;
+};

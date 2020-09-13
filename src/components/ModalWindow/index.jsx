@@ -1,6 +1,6 @@
 import React from "react";
 
-import FormCostIncome from "../../components/FormCostIncome";
+import FormCostIncome from "../../components/FormCostIncome/containerCostIncome";
 import { overlay, modal, modalHeader } from "./ModalWindow.module.css";
 
 const ModalWindow = ({changeIsModalOpen,actionType}) => {

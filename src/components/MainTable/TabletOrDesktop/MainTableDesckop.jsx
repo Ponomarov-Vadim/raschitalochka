@@ -1,40 +1,16 @@
 import React from "react";
+
+import { toISODate, formatNumbers } from "../../../helpers/format";
 import {
   wrap,
   table,
   tableRow,
   tableHead,
   boxButtons,
+  notifyMessage,
 } from "./MainTableDesckop.module.css";
 
-const transferData = [
-  {
-    date: "04.01.19",
-    type: "+",
-    categories: "Regular Income",
-    comment: "January bonus",
-    amount: "100.00",
-    balance: "6 900.00",
-  },
-  {
-    date: "04.01.19",
-    type: "-",
-    categories: "Food",
-    comment: "Coffee with Tim",
-    amount: "30.00",
-    balance: "3 400.00",
-  },
-  {
-    date: "04.01.19",
-    type: "-",
-    categories: "Food",
-    comment: "Coffee with Tim",
-    amount: "30.00",
-    balance: "3 400.00",
-  },
-];
-
-const MainTableDesckop = ({ children }) => {
+const MainTableDesckop = ({ financeData, children }) => {
   return (
     <section className={wrap}>
       <div className={boxButtons}>{children}</div>
@@ -50,22 +26,25 @@ const MainTableDesckop = ({ children }) => {
           </tr>
         </thead>
         <tbody>
-          {transferData.map(
-            ({ date, type, categories, comment, amount, balance }, index) => (
-              <tr key={index} className={tableRow}>
-                <td>{date}</td>
+          {financeData.map(
+            ({ _id, date, type, category, comments, amount, balanceAfter }) => (
+              <tr key={_id} className={tableRow}>
+                <td>{toISODate(date)}</td>
                 <td>{type}</td>
-                <td>{categories}</td>
-                <td>{comment}</td>
+                <td>{category}</td>
+                <td>{comments}</td>
                 <td style={{ color: type === "+" ? "#75c16e" : "#ff6c00" }}>
-                  {amount}
+                  {formatNumbers(amount)}
                 </td>
-                <td>{balance}</td>
+                <td>{formatNumbers(balanceAfter)}</td>
               </tr>
             )
           )}
         </tbody>
       </table>
+      {!financeData.length && (
+        <h2 className={notifyMessage}>You have no transactions</h2>
+      )}
     </section>
   );
 };

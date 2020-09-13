@@ -1,13 +1,14 @@
 .mainWrapper {
     max-width: 1280px;
-    margin: 0 auto
+    margin: 0 auto;
+    padding:  20px;
 }
 
 @media (min-width: 1024px) {
     .mainWrapper {
         width:1024px;
-        display: -webkit-flex;
         display: flex;
+        justify-content: space-between;
         padding: 1.5rem 0 2rem
     }
 }
